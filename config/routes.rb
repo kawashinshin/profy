@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
        root  "top#index"
        resources :top
-       resources :users, only: [:show]
+       resources :users, only: [:show, :edit, :update]
+       resources :groups, only: [:show, :edit, :update]
+       resources :questions, only: [:create]
 
 
   #   resources :products do
