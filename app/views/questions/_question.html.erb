@@ -11,5 +11,19 @@
       <span class="q">Q</span>
       <span class="question_text"><%= question.text %></span>
     </div>
+    <div class="questioned">
+          <span>回答<%= question.answers.count %>件</span>
+        </div>
+        <% unless question.answers.exists?(user_id: current_user.id)%>
+        <!-- その質問への回答の中に、今ログインしているユーザーが答えたものが無かった場合 -->
+        <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
+          <%= hidden_field_tag(:question_id, question.id) %>
+          <%= submit_tag("回答する") %>
+        <% end %>
+      <% else %>
+        <div class="answer_other">
+          <h4>※回答済み※</h4>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
