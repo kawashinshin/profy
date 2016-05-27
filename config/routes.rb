@@ -4,7 +4,7 @@ Rails.application.routes.draw do
        resources :top
        resources :users, only: [:show, :edit, :update]
        resources :groups, only: [:show, :edit, :update]
-       resources :questions, only: [:create]
+       resources :questions, only: [:create, :show]
        resources :answers, only: [:new, :create]
 
 

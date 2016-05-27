@@ -12,8 +12,8 @@
       <span class="question_text"><%= question.text %></span>
     </div>
     <div class="questioned">
-          <span>回答<%= question.answers.count %>件</span>
-        </div>
+        <%= link_to "回答#{question.answers.count}件", question_path(question) %>
+    </div>
         <% unless question.answers.exists?(user_id: current_user.id)%>
         <!-- その質問への回答の中に、今ログインしているユーザーが答えたものが無かった場合 -->
         <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
